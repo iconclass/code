@@ -179,7 +179,6 @@ def fetch_from_db(notation):
             f"Iconclass DB not found at {ICONCLASS_DB_LOCATION} downloading from {ICONCLASS_DB_URL} "
         )
         from urllib.request import urlopen
-        import hashlib
 
         datafile = urlopen(ICONCLASS_DB_URL).read()
         open(ICONCLASS_DB_LOCATION, "wb").write(datafile)
@@ -222,6 +221,7 @@ def fetch_from_db(notation):
         SQL = "SELECT type, language, text FROM keys AS K LEFT JOIN texts ON K.id = texts.ref WHERE k.code = ? AND k.suffix = ?"
         cursor.execute(SQL, (keycode, key))
         fetched_keys = False
+
         for txt_type, lang, k_txt in cursor.fetchall():
             fetched_keys = True
             if txt_type == 0:
@@ -229,7 +229,7 @@ def fetch_from_db(notation):
                 new_txt = "%s (+ %s)" % (obj_txt, k_txt)
                 obj.setdefault("txt", {})[lang] = new_txt
             if txt_type == 1:
-                obj.setdefault("kw", {}).setdefault(language, []).append(k_txt)
+                obj.setdefault("kw", {}).setdefault(lang, []).append(k_txt)
 
         # If there was a key in the requested notation, but no keys retrieved, bail
         if key and not fetched_keys:
