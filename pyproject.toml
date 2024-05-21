@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "iconclass"
+version = "0.27"
+description = "This package provides a Python interface to using ICONCLASS."
+homepage = "https://iconclass.org/"
+license = "MIT"
+authors = ["Etienne Posthumus <ep@epoz.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
