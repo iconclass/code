@@ -45,12 +45,16 @@ def make_data_zip(filepath):
             f"txt_{lang}_4.txt",
             f"txt_{lang}_5_6_7_8.txt",
             f"txt_{lang}_9.txt",
+            f"txt_{lang}_keys.txt",
         ):
-            buf.append(
-                urllib.request.urlopen(
-                    f"https://raw.githubusercontent.com/iconclass/data/main/txt/{lang}/{filename}"
-                ).read()
-            )
+            try:
+                buf.append(
+                    urllib.request.urlopen(
+                        f"https://raw.githubusercontent.com/iconclass/data/main/txt/{lang}/{filename}"
+                    ).read()
+                )
+            except urllib.error.HTTPError:
+                pass
         data_zip.writestr(f"txt_{lang}.txt", b"\n".join(buf))
     for lang in ("en", "de", "fr", "it", "pt", "jp"):
         buf = []
