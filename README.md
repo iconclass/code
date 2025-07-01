@@ -7,7 +7,7 @@ Made by Hans Brandhorst <jpjbrand@xs4all.nl> & Etienne Posthumus <eposthumus@gma
 
     ...with lots of support from a global cast of many, many people since 1972.
 
-You can test this library by [opening the example notebook on Google Colab](https://colab.research.google.com/github/iconclass/code/main/example.ipynb)
+You can test this library by [opening the example notebook on Google Colab](https://colab.research.google.com/github/iconclass/code/blob/main/example.ipynb)
 
 ## Example usage:
 
